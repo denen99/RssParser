@@ -13,7 +13,7 @@ trait RssFeed {
   val desc: String
   val link: String
 
-  def items: Future[Seq[RssItem]]
+  def items: Future[Set[RssItem]]
 
   //def extract(body: String): Seq[RssItem]
 }
@@ -30,22 +30,7 @@ case class XmlRssFeed(id: Long, title:String, link:String, desc:String, language
 
   def items = RssDAO.getItems(this.id)
 
-//  lazy val items: Seq[RssItem] = extract(body)
-//
-//  def extract(xml:Elem) : Seq[RssItem] = {
-//    for (channel <- xml \\ "channel") yield {
-//        for (item <- (channel \\ "item")) yield {
-//          RssItem(
-//            (item \\ "title").text,
-//            (item \\ "link").text,
-//            (item \\ "description").text,
-//            dateFormatter.parse((item \\ "pubDate").text),
-//            (item \\ "guid").text
-//          )
-//        }
-//    }
-//    items.flatten
-//  }
+
 
 }
 

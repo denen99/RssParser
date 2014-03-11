@@ -1,12 +1,17 @@
-import java.util.{Locale, Date}
-import scala.xml.{XML, Elem, Node}
-import java.text.SimpleDateFormat
+import scala.concurrent._
+import scala.concurrent.duration._
+import scala.concurrent.ExecutionContext.Implicits.global
 
-val dateFormatter = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss Z", Locale.ENGLISH);
-val d = "Sun, 02 Mar 2014 20:00:46 +0000"
-val f = dateFormatter.parse(d)
 
-f.getTime / 1000
+def rget(s: String): Future[Option[String]] = Future { Some( s + " Future")}
+
+def rnext(): Future[String] = Future { "next" }
+
+
+
+rget("test").flatMap { r => r.fold(rnext())(a => Future {a} )  }.map( y => println("Y IS " + y) )
+
+
 
 
 

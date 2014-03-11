@@ -18,17 +18,15 @@ class RssParser extends RssHelpers {
    ------------------------------------------------------------*/
    protected def parseItems(xml: Elem): Seq[RssItem] =  {
 
-    val items = for (channel <- xml \\ "channel") yield {
-      for (item <- (channel \\ "item")) yield {
-        val r = RssItem(
+    val items = for (channel <- xml \ "channel") yield {
+      for (item <- channel \ "item") yield {
+        RssItem(
           (item \ "title").filter(_.prefix != "media").text,
           (item \ "link").text,
           (item \ "description").text,
           getGuid((item \ "guid").text,(item \ "link").text),
           getDate((item \ "pubDate").text)
         )
-        logger.debug("Building RSS Item  : " + r.toString )
-        r
       }
     }
     items.flatten
@@ -70,7 +68,7 @@ class RssParser extends RssHelpers {
    Return the RSS Object of a given feedURL
   ------------------------------------------------ */
    def parseFeed(f: FeedUrl,  body: xml.Elem): RssFeed = {
-    if ( (body \\ "channel").length == 0)
+    if ( (body \ "channel").length == 0)
       throw new Exception("Not an XML FEED!")
     else
       parseFeedXML(f,body)
