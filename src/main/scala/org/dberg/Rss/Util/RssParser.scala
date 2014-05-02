@@ -1,8 +1,8 @@
-package io.socialstream.Rss.Util
+package org.dberg.Rss.Util
 
 import scala.xml.Elem
-import io.socialstream.Rss.{RssFeed, FeedUrl, RssItem}
-import io.socialstream.Rss.RssDAO
+import org.dberg.Rss.{RssFeed, FeedUrl, RssItem}
+import org.dberg.Rss.RssDAO
 import org.jsoup._
 import dispatch._
 import scala.concurrent.ExecutionContext.Implicits.global

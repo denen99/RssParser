@@ -1,4 +1,4 @@
-package io.socialstream.Rss
+package org.dberg.Rss
 
 import java.util.{Date}
 import scala.xml._

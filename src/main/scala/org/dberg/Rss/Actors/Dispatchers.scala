@@ -1,7 +1,7 @@
-package io.socialstream.Rss.Actors
+package org.dberg.Rss.Actors
 
 import akka.actor.{ActorSystem, Props}
-import io.socialstream.Rss.{URLParser, URLFetcher, RSSUpdater}
+import org.dberg.Rss.{URLParser, URLFetcher, RSSUpdater}
 import akka.routing.RoundRobinRouter
 
 object Dispatchers  {

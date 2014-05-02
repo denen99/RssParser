@@ -1,4 +1,4 @@
-package io.socialstream.Rss.Util
+package org.dberg.Rss.Util
 
 import java.util.{Locale, Date}
 import scala.concurrent.duration._

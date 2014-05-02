@@ -1,13 +1,13 @@
-package io.socialstream.Rss
+package org.dberg.Rss
 
 import akka.actor.Actor
 import org.slf4j.{Logger, LoggerFactory}
-import io.socialstream.Rss.Actors.Dispatchers._
+import org.dberg.Rss.Actors.Dispatchers._
 import java.text.SimpleDateFormat
 import java.util.Locale
 import scala.util._
 import scala.concurrent.ExecutionContext.Implicits.global
-import io.socialstream.Rss.Util.RssHelpers
+import org.dberg.Rss.Util.RssHelpers
 
 
 

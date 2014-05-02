@@ -1,4 +1,4 @@
-package io.socialstream.Rss
+package org.dberg.Rss
 
 import akka.actor.Actor
 import java.text.SimpleDateFormat

@@ -1,12 +1,12 @@
-package io.socialstream.Rss
+package org.dberg.Rss
 
 import scala.concurrent.ExecutionContext.Implicits.global
 import java.text.SimpleDateFormat
 import java.util.{Locale, Date}
 import scala.util.{Success,Failure}
 import org.slf4j.{Logger, LoggerFactory}
-import io.socialstream.Rss.Actors.Dispatchers
-import io.socialstream.Rss.Actors.Dispatchers._
+import org.dberg.Rss.Actors.Dispatchers
+import org.dberg.Rss.Actors.Dispatchers._
 
 object Main extends App {
 

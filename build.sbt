@@ -2,7 +2,7 @@ import AssemblyKeys._ // put this at the top of the file
 
 assemblySettings
 
-version := "1.0.0"
+version := "0.0.2"
 
 fork := true
 
@@ -16,7 +16,7 @@ resolvers += "Sonatype Snapshots" at "http://oss.sonatype.org/content/repositori
 
 resolvers += "Sonatype Releases" at "http://oss.sonatype.org/content/repositories/releases"
 
-name := "SocialStream-Parser"
+name := "RssParser"
 
 libraryDependencies ++= Seq(
    "net.debasishg" %% "redisreact" % "0.3",

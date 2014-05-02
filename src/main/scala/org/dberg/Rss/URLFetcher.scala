@@ -1,11 +1,11 @@
-package io.socialstream.Rss
+package org.dberg.Rss
 
 import akka.actor.Actor
 import scala.concurrent.Future
 import dispatch._
 import scala.concurrent.ExecutionContext.Implicits.global
 import org.slf4j.{Logger, LoggerFactory}
-import io.socialstream.Rss.Actors.Dispatchers._
+import org.dberg.Rss.Actors.Dispatchers._
 import scala.util.{Success,Failure}
 
 

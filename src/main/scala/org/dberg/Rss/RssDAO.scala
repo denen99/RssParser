@@ -1,4 +1,4 @@
-package io.socialstream.Rss
+package org.dberg.Rss
 
 import scala.concurrent._
 import scala.concurrent.duration._
@@ -7,7 +7,7 @@ import scala.util.{ Success, Failure}
 import com.textteaser.summarizer._
 import net.codingwell.scalaguice.InjectorExtensions.ScalaInjector
 import com.google.inject.Guice
-import io.socialstream.Rss.Util._
+import org.dberg.Rss.Util._
 import com.textteaser.summarizer.Summarizer
 
 
