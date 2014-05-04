@@ -14,6 +14,6 @@ class RSSUpdater extends Actor  {
 
   def receive = {
     case (feedId: Long,item:RssItem) => {logger.info("Calling RssDao.save"); RssDAO.saveItem(feedId,item) }
-    case i => { logger.info("FAILURE saving " + i); throw new Exception("Unknown type in RSSUpdater " + i) }
+    case i => { logger.error("FAILURE saving " + i); throw new Exception("Unknown type in RSSUpdater " + i) }
   }
 }

@@ -7,6 +7,8 @@ import scala.concurrent.ExecutionContext.Implicits.global
 import org.slf4j.{Logger, LoggerFactory}
 import org.dberg.Rss.Actors.Dispatchers._
 import scala.util.{Success,Failure}
+import com.ning.http.client.Response
+import scala.xml.Elem
 
 
 class URLFetcher extends Actor {
@@ -17,16 +19,16 @@ class URLFetcher extends Actor {
   // Fetch a URL
   //---------------------------
   def fetch(feedUrl: FeedUrl): Unit ={
-    val resp = Http(url(feedUrl.url) OK as.xml.Elem)
-    resp.onComplete {
-      case Success(x) => urlParser ! (feedUrl,x)  // send body
-      case Failure(x) => logger.error("Failed to retreive URL with response : " + x )
+    val resp: Either[Throwable,Elem] = Http.configure(_ setFollowRedirects true)(url(feedUrl.url) OK as.xml.Elem).either()
+    resp match {
+      case Right(x) => urlParser ! (feedUrl,x)  // send body
+      case Left(x) => logger.error("Failed to retreive URL with response : " + x.getMessage )
     }
   }
 
   def receive = {
     case url: FeedUrl => { logger.info("Parsing URL " + url + "\n\n"); fetch(url) }
-    case _ => logger.info("Unknown type passed to URLFetcher")
+    case _ => logger.error("Unknown type passed to URLFetcher")
   }
 
 }

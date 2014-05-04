@@ -24,12 +24,9 @@ object Main extends App {
    }
  }
 
-
-  //spawn {
     while (true) {
-      Thread.sleep(10000);
       doIt
+      Thread.sleep(1000000);
     }
-  //}
 
 }

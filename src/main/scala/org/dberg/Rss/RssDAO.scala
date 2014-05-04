@@ -1,9 +1,7 @@
 package org.dberg.Rss
 
 import scala.concurrent._
-import scala.concurrent.duration._
 import scala.concurrent.ExecutionContext.Implicits.global
-import scala.util.{ Success, Failure}
 import com.textteaser.summarizer._
 import net.codingwell.scalaguice.InjectorExtensions.ScalaInjector
 import com.google.inject.Guice
@@ -26,13 +24,13 @@ object RssDAO extends RssHelpers {
   ------------------------------------------------ */
   protected def nextId(t: String, key: String): Future[String] = t match {
     case "feed" => {
-      logger.info("Incrementing feed id") ;
+      logger.debug("Incrementing feed id") ;
       val i = redis.incr("feed:id")
       i.map(n => redis.set(key,n.toString))
       i.map(x => x.toString)
     }
     case "item" => {
-      logger.info("Incrementing item id") ;
+      logger.debug("Incrementing item id") ;
       val i = redis.incr("item:id")
       i.map(n => redis.set(key,n.toString))
       i.map(x => x.toString)

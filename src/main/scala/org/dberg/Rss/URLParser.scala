@@ -24,12 +24,12 @@ class URLParser extends Actor with RssHelpers {
       case Success(r: RssFeed) => {
         logger.info("Successfully got Feed " + r)
         r.items.onComplete {
-          case Success(s) => s.map(f => println(f))
-          case Failure(y) => throw new Exception("Failed to fetch items for Rss feed " + y)
-          case _ => throw new Exception("No clue what happened")
+          case Success(s) => s.map(f => logger.info(f.toString))
+          case Failure(y) => logger.error("Failed to fetch items for Rss feed " + y)
+          case _ => logger.error("No clue what happened")
         }
       }
-      case Failure(y) => throw new Exception("Error getting feed for " + f )
+      case Failure(y) => logger.error("Error getting feed for " + f + " error: " + y.getMessage )
     }
 
 
@@ -42,7 +42,7 @@ class URLParser extends Actor with RssHelpers {
 
   def receive = {
     case (url: FeedUrl,body: xml.Elem) =>  parse(url,body)
-    case x => throw new Exception("Unknown type passed to URLparser: " + x + " from sender " + sender)
+    case x => logger.error("Unknown type passed to URLparser: " + x + " from sender " + sender)
   }
 
 }
