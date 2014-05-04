@@ -2,7 +2,7 @@ import AssemblyKeys._ // put this at the top of the file
 
 assemblySettings
 
-version := "0.0.2"
+version := "0.0.3"
 
 //fork := true
 
