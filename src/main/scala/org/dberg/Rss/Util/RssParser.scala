@@ -46,7 +46,7 @@ class RssParser extends RssHelpers {
     Takes XML body and RSS Feed Object
    --------------------------------------------------*/
    protected def parseFeedXML(f: FeedUrl,  xml: Elem): RssFeed = {
-    logger.info("Parsing XML Feed : " + f.url)
+    logger.debug("Parsing XML Feed : " + f.url)
 
     val title = ( xml \\ "channel" \ "title").text
     val desc  = ( xml \\ "channel" \ "description").text

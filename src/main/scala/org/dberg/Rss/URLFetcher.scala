@@ -27,7 +27,7 @@ class URLFetcher extends Actor {
   }
 
   def receive = {
-    case url: FeedUrl => { logger.info("Parsing URL " + url + "\n\n"); fetch(url) }
+    case url: FeedUrl => { logger.debug("Parsing URL " + url + "\n\n"); fetch(url) }
     case _ => logger.error("Unknown type passed to URLFetcher")
   }
 

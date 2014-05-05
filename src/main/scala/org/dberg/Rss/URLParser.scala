@@ -22,9 +22,9 @@ class URLParser extends Actor with RssHelpers {
 
     feed.onComplete {
       case Success(r: RssFeed) => {
-        logger.info("Successfully got Feed " + r)
+        logger.debug("Successfully got Feed " + r)
         r.items.onComplete {
-          case Success(s) => s.map(f => logger.info(f.toString))
+          case Success(s) => logger.debug("Parse complete for feed : " + f.url)//  s.map(f => logger.debug(f.toString))
           case Failure(y) => logger.error("Failed to fetch items for Rss feed " + y)
           case _ => logger.error("No clue what happened")
         }
